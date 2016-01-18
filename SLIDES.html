@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Massive Deployments on Amazon AWS with JVM</title>
+
+<meta name="description" content="Massive Deployments on Amazon AWS with JVM">    
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="reveal.js/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + 
+    '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="reveal.js/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<style type="text/css">
+.reveal section img {
+  border: none;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background-image: url(./images/sdl.png);
+  background-position: top right;
+  background-size: 110px;
+  background-repeat: no-repeat;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section>
+<h1>Massive Deployments on Amazon AWS with JVM</h1>
+
+<p>
+<h4></h4>
+</p>
+</section>  
+
+
+<section id="massive-deployments-on-amazon-aws-with-jvm" class="level2">
+<h2>Massive Deployments on Amazon AWS with JVM</h2>
+<p>Behrooz Nobakht</p>
+<p><a href="https://twitter.com/behruz">@behruz</a></p>
+</section>
+<section id="timeline" class="level2">
+<h2>Timeline</h2>
+<figure>
+<img src="images/timeline.png" />
+</figure>
+</section>
+<section id="from-on-premise-to-managed" class="level2">
+<h2>From <em>On-Premise</em> to <em>Managed</em></h2>
+<figure>
+<img src="images/deployment-method.png" />
+</figure>
+</section>
+<section id="what-does-massive-mean" class="level2">
+<h2>What does <em>massive</em> mean?</h2>
+<figure>
+<img src="images/massive-scale.png" />
+</figure>
+</section>
+<section id="what-is-a-server" class="level2">
+<h2>What is a <em>server</em>?</h2>
+<section id="development" class="level3">
+<h3>Development</h3>
+<ul class="incremental">
+<li>Um, huh?!</li>
+<li>… <em>pause</em> …</li>
+<li>We shipt it to Ops.</li>
+<li>They deploy!</li>
+</ul>
+</section>
+<section id="operation" class="level3">
+<h3>Operation</h3>
+<ul class="incremental">
+<li><em>What</em> version to install?</li>
+<li><em>What</em> process to start?</li>
+<li><em>Which</em> data to use?</li>
+<li><em>How</em> to access logs?</li>
+<li><em>How</em> to monitor processes?</li>
+<li><em>How</em> to sync our infra; e.g. LB servers?</li>
+</ul>
+</section>
+</section>
+<section id="server-abstraction-is-too-low-level-for-our-development-and-operation" class="level2">
+<h2><em>Server</em> abstraction is too <em>low-level</em> for our <em>development</em> and <em>operation</em></h2>
+</section>
+<section id="server-as-an-http-api" class="level2">
+<h2>Server as an HTTP API</h2>
+<div style="float:right;">
+<figure>
+<img src="images/hexa.png" />
+</figure>
+</div>
+<ol class="incremental" type="1">
+<li><code>/install</code></li>
+<li><code>/create</code></li>
+<li><code>/process</code></li>
+<li><code>/logs</code></li>
+<li><code>/monitor</code></li>
+<li><code>/resources</code></li>
+</ol>
+</section>
+<section id="a-jvm-for-a-jvm" class="level2">
+<h2>A JVM for a JVM</h2>
+<p><strong>Service Provider Interfaces (SPI)</strong></p>
+<figure>
+<img src="images/server.png" />
+</figure>
+<ul class="incremental">
+<li>A few “factory” patterns</li>
+<li>Generic RESTful operations: logs, monitors, resources</li>
+</ul>
+</section>
+<section id="deployment-is-a-development-responsibility" class="level2">
+<h2><em>Deployment</em> is a development responsibility</h2>
+<ul class="incremental">
+<li>Does it have <code>//:14777/</code>?</li>
+<li>SPI implemented?</li>
+<li>Tested and Integrated?</li>
+<li>Locally Deployable?</li>
+<li>Deliver to Ops.</li>
+<li>They Deploy!</li>
+</ul>
+</section>
+<section id="does-it-really-matter-whats-beneath-14777" class="level2">
+<h2>Does it really matter what’s beneath <code>//:14777/</code> ?!</h2>
+</section>
+<section id="section" class="level2">
+<h2></h2>
+<figure>
+<img src="images/arch.png" />
+</figure>
+</section>
+<section id="section-1" class="level2">
+<h2></h2>
+<ul class="incremental">
+<li>Infrastructure provides servers</li>
+<li>Every server boots with one <code>//:14777/</code></li>
+<li>Auto-register server with Controller</li>
+<li>Controller synchronizes servers with load balancers</li>
+<li>Controller manages the <em>state</em> of servers</li>
+<li>Controller automates <em>workflows</em></li>
+</ul>
+</section>
+<section id="how-we-benefit" class="level2">
+<h2>How we benefit?</h2>
+<ul class="incremental">
+<li>Orchestration becomes automatic</li>
+<li>Relieve from <em>small</em> operation <em>details</em></li>
+<li>Disaster Recovery</li>
+<li>Failure Mitigation</li>
+<li>Monitoring</li>
+<li>Horizontal Scaling</li>
+</ul>
+</section>
+<section id="section-2" class="level2">
+<h2></h2>
+<p>Operating ≅ 2000 AWS servers with an awesome small DevOps team</p>
+<figure>
+<img src="images/massive.png" />
+</figure>
+</section>
+<section id="section-3" class="level2">
+<h2></h2>
+<figure>
+<img src="images/sdl.png" />
+</figure>
+<p><a href="http://labs.sdl.com/" class="uri">http://labs.sdl.com/</a></p>
+</section>
+</div>
+
+<script 
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+</script>
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+$('ul.incremental li').addClass('fragment')
+</script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'white', 
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>
