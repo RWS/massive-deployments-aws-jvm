@@ -102,11 +102,9 @@ for our *development* and *operation*
 
 ##
 
-Operating
-≅ 2000 AWS servers
-with an
-awesome small
-DevOps team
+Operating *2000+* AWS servers
+
+with an awesome small DevOps team
 
 ![](images/massive.png)
 

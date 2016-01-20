@@ -16,4 +16,4 @@ $ python -m SimpleHTTPServer
 Then open browser to `http://localhost:8000/SLIDES.html`.
 
 [1]: https://jug.bg/events/massive-deployments-on-amazon-aws-using-jvm/
-[2]: pandoc.org/README.html
+[2]: http://pandoc.org/README.html
