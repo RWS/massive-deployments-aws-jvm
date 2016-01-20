@@ -26,7 +26,7 @@ Behrooz Nobakht
 
 * Um, huh?!
 * ... *pause* ...
-* We shipt it to Ops.
+* We ship it to Ops.
 * They deploy!
 
 ### Operation
@@ -38,7 +38,13 @@ Behrooz Nobakht
 * *How* to monitor processes?
 * *How* to sync our infra; e.g. LB servers?
 
-## *Server* abstraction is too *low-level* for our *development* and *operation*
+## 
+
+**Server** abstraction 
+
+is too *low-level* 
+
+for our *development* and *operation*
 
 ## Server as an HTTP API
 
@@ -46,12 +52,12 @@ Behrooz Nobakht
 ![](images/hexa.png)
 </div>
 
-1. `/install`
-2. `/create`
-3. `/process`
-4. `/logs`
-5. `/monitor`
-6. `/resources`
+* `/install`
+* `/create`
+* `/process`
+* `/logs`
+* `/monitor`
+* `/resources`
 
 ## A JVM for a JVM
 **Service Provider Interfaces (SPI)**
@@ -109,3 +115,5 @@ DevOps team
 ![](images/sdl.png)
 
 <http://labs.sdl.com/>
+
+<https://github.com/sdl>
