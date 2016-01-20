@@ -110,8 +110,8 @@ with an awesome small DevOps team
 
 ## 
 
-![](images/sdl.png)
+![](images/sdl_fredhopper_logo.png)
 
-<http://labs.sdl.com/>
+<http://labs.sdl.com/fredhopper>
 
 <https://github.com/sdl>
